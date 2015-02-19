@@ -1,0 +1,51 @@
+{
+	"routes": {
+		"templateUrl": "index.html",
+		"files": ["styles/main.css"],
+		"children": [
+			{
+				"url": "/",
+				"name": "main",
+				"templateUrl": "views/wizard.html",
+				"controller": "wizCtrl",
+				"files": ["scripts/controllers/main.js"],
+				"sidenav": "default"
+			},
+			{
+				"url": "/form",
+				"name": "form",
+				"controller": "formCtrl",
+				"files": ["scripts/controllers/form.js"],
+				"sidenav": {
+					"title": "Formulario",
+					"ngIcon": "shopping_cart"
+				}
+			},
+			{
+				"url": "/comdoc",
+				"name": "comdoc",
+				"template": "<div class=\"alert alert-info\"><p>A Diego continuación se le pedirá que ingrese su nombre de <strong>usuario y contraseña de <em>Comdoc</em></strong>. Si usted está acostumbrado a ingresar en <em>Comdoc</em>, cuando ingrese el usuario, deberá hacerlo <strong>sin \"@unc\"</strong>.</p><p>Luego, le informará que <strong>la aplicación solicita</strong> ciertos datos de su cuenta. Por favor, <strong>acepte</strong> la solicitud para poder ingresar al formulario.</p></div><p>Haga click en el siguiente enlace para comenzar su autenticación en usuarios.</p><p><a class=\"btn btn-default\" href=\"../connect\">Autenticar</a></p>",
+				"sidenav": {
+					"title":"Comdoc sidenav",
+					"ngIcon": "verified_user",
+					"ngIconFill": "#55ff77"
+				}
+			},
+			{
+				"url": "/login",
+				"name": "login",
+				"template": "<h3>Login</h3>",
+				"sidenav": {
+					"title": "Login sidenav Title",
+					"ngIcon": "send",
+					"ngIconFill": "blue"
+				}
+			}
+		]
+	},
+	"title": "Yuli",
+	"description": "Sistema de Personas",
+	"image": "images/yuliapaizados.gif",
+	"rest": "http://yuli.unc.edu.ar:3000/api",
+	"socket": "http://yuli.unc.edu.ar:3000/api"
+}

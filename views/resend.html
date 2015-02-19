@@ -1,0 +1,22 @@
+<div ng-switch on="status">
+	<div ng-switch-when="error">
+		<div class="alert alert-danger" role="alert">
+			No se ha podido enviar un correo a su cuenta <strong>{{mail}}</strong>. Por favor, controle que la cuenta haya sido verificada siguiendo el enlace de verificación que le hemos enviado.
+		</div>
+	</div>
+	<div ng-switch-when="ok">
+		<div class="alert alert-success" role="alert">
+			Se le ha enviado un nuevo token a <strong>{{mail}}</strong>. Por favor, ingrese a su cuenta de correo y siga el enlace enviado.
+		</div>
+
+		<div class="alert alert-warning" role="alert">
+			Los enlaces de ingreso que le enviamos con anterioridad, dejaran se ser válidos.
+		</div>
+	</div>
+	<div ng-switch-default>
+		<div class="alert alert-info" role="alert">
+			<p>Enviando mail a su cuenta primaria.</p>
+			<p>Por favor, aguarde unos instantes.</p>
+		</div>
+	</div>
+</div>

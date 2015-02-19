@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="alert alert-danger" role="alert" ng-if="errorMsg">
+    {{errorMsg}}
+  </div>
+  <p><strong>Bienvenido</strong> al proceso de <strong>reserva</strong> de nombre de usuario para su <strong>Cuenta Universitaria</strong></p>
+  <div class="alert alert-info" role="alert">
+    <p>Desde aquí usted podrá <em>reservar</em> un nombre de usuario, y <em>asociar</em> correos electrónicos al mismo.</p>
+  </div>
+  <br/>
+  <p>Para empezar, por favor elija una de las siguientes opciones</p>
+  <form class="form-horizontal" name="form" role="form" ng-submit="next(1)">
+    <div class="form-group">
+      <label class="control-label">
+        <input type="radio" ng-model="step1Status" name="status" value="comdoc"/> Tengo usuario en Comdoc, y conozco mi contraseña
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label">
+        <input type="radio" ng-model="step1Status" name="status" value="usuario"/> Tengo usuario en Comdoc, pero no conozco mi contraseña
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label">
+        <input type="radio" ng-model="step1Status" name="status" value="manual"/> No tengo usuario en Comdoc o no pude recuperar mi contraseña
+      </label>
+    </div>
+    <button>Siguiente</button>
+  </form>
+</div>

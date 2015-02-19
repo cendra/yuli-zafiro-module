@@ -1,0 +1,192 @@
+<form class="form-horizontal" name="form" role="form" ng-submit="save()"> 
+	<h2>Datos Personales</h2>
+	<hr/>
+	<div ng-switch on="row.cargado">
+		<div ng-switch-when="true"> 
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Nombre</label>
+				<p class="form-control-static">{{row.givenName}}</p>
+			</div>
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Apellido</label>
+			   	<p class="form-control-static">{{row.sn}}</p>
+			</div>
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">CUIL</label>
+				<p class="form-control-static">{{row.cuil}}</p>
+			</div>
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Documento</label>
+				<p class="form-control-static">{{row.uidNumber}}</p>
+			</div>
+		</div>
+		<div ng-switch-default>
+			<div class="form-group" ng-class="{'has-error': form.gn.$invalid}">
+				<label class="col-sm-2 control-label" for="gn">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" name="gn" class="form-control" ng-model="row.givenName"/>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.sn.$invalid}">
+				<label class="col-sm-2 control-label" for="sn">Apellido</label>
+			   	<div class="col-sm-10">
+					<input type="text" name="sn" class="form-control" ng-model="row.sn"/>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.cuil.$invalid}">
+				<label class="col-sm-2 control-label" for="cuil">CUIL</label>
+				<div class="col-sm-10">
+					<input type="number" name="cuil" class="form-control" ng-model="row.cuil"/>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.doc.$invalid}">
+				<label class="col-sm-2 control-label" for="doc">Documento</label>
+				<div class="col-sm-10">
+					<input type="text" name="doc" class="form-control" ng-model="row.uidNumber"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2>Correo Electrónico</h2>
+	<hr/>
+	<div class="alert alert-info" role="alert">
+		<p>
+			<strong>Elija</strong> su cuenta de correo <strong>primaria</strong>. Cuando guarde el formulario, se le enviarán <strong>dos</strong> correos electrónicos a dicha cuenta; uno para verificar que dicha cuenta existe, y el segundo con información necesaria para volver a ingresar a este formulario y realizar cambios de ser necesario.
+		</p>
+		<p>
+			<strong>Recuerde</strong> que es obligatorio ingresar, como mínimo, un correo electrónico válido.
+		</p>
+	</div>
+	<div class="alert alert-warning" role="alert">
+		<p>
+			Las cuentas de correo que ingrese deben estar referidas a <strong>su persona</strong>, y no a un puesto o lugar. Es decir, por ejemplo, ingresar <em>jperez@facultad.unc.edu.ar</em> sería adecuado, no así <em>decano@facultad.unc.edu.ar</em>.
+		</p>
+	</div>
+
+	<h3>Correos Personales</h3>
+	<hr/>
+	<p>Por favor, ingrese sus correos personales <strong>no relacionados</strong> con la institución.</p>
+	<table class="table table-hover">
+		<thead>
+			<th><input type="checkbox" ng-model="pselect"/></th>
+			<th>Correo</th>
+			<th>Verificado</th>
+			<th>Primario</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="mail in row.mails.p">
+				<td><input type="checkbox" ng-model="mail.select"/></td>
+				<td ng-switch on="mail.loaded">
+					<span ng-switch-when="true">{{mail.mail}}</span>
+					<span ng-switch-default>
+						<ng-form name="perMails">
+							<div class="has-feedback" ng-class="{'has-error':  mail.mail != '' &amp;&amp; perMails.mail.$invalid &amp;&amp; perMails.mail.$dirty, 'has-success': mail.mail != '' &amp;&amp; perMails.mail.$valid &amp;&amp; perMails.mail.$dirty}">
+								<input type="email" class="form-control" ng-focus="add('p', $last)" name="mail" ng-model="mail.mail"/>
+								<span class="glyphicon form-control-feedback" ng-show="mail.mail != '' &amp;&amp; perMails.mail.$dirty" ng-class="{'glyphicon-ok': perMails.mail.$valid, 'glyphicon-remove': perMails.mail.$invalid}"></span>
+							</div>
+						</ng-form>
+					</span>
+				</td>
+				<td><span class="glyphicon" ng-class="{'glyphicon-ok-circle': mail.verified, 'glyphicon-ban-circle': !mail.verified}"></span></td>
+				<td><input type="radio" name="primaria" ng-value="mail" ng-model="$parent.row.primary" required/></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div ng-switch on="sinCorreo">
+		<div ng-switch-when="true" ng-if="row.type=='new'&amp;&amp;!row.cargado">
+			<h3>Datos Adicionales<button type="button" class="pull-right btn btn-default btn-xs" ng-click="setSC(false)">Tengo correo institucional</button></h3>
+			<hr/>
+			<p>Por favor, ingrese alguno de los siguientes datos adicionales.</p>
+			<div class="alert alert-warning" role="alert">
+				Su nombre de usuario <strong>será reservado</strong> por un tiempo, pero su usuario en sí <strong>no</strong> será válido hasta verificar su identidad.
+			</div>
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Dependencia</label>
+			   	<div class="col-sm-10">
+					<select class="form-control" ng-model="adic.dependencia" ng-options="dep.id as dep.name for dep in deps" required>
+						<option value="">-- Seleccione --</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Legajo</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="adic.legajo"/>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+				<label class="col-sm-2 control-label">Teléfono Interno de Contacto</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" ng-model="adic.tel" required/>
+				</div>
+			</div>
+		</div>
+		<div ng-switch-default>
+			<h3>Correos Institucionales <button type="button" ng-if="row.type=='new'&amp;&amp;!row.cargado" class="pull-right btn btn-default btn-xs" ng-click="setSC(true)">No tengo correo institucional</button></h3>
+			<hr/>
+			<p>Por favor, ingrese sus correos personales <strong>relacionados</strong> con la institución.</p>
+			<table class="table table-hover">
+				<thead>
+					<th><input type="checkbox" ng-model="oselect"/></th>
+					<th>Correo</th>
+					<th>Verificado</th>
+					<th>Primario</th>
+				</thead>
+				<tbody>
+					<tr ng-form="orgMails" ng-repeat="mail in row.mails.o">
+						<td><input type="checkbox" ng-model="mail.select" ng-disabled="orgMails.mail.$invalid"/></td>
+						<td ng-switch on="mail.loaded">
+							<div ng-switch-when="true">{{mail.mail}}</div>
+							<div ng-switch-default>
+								<div class="has-feedback" ng-class="{'has-error': mail.mail != '' &amp;&amp; orgMails.mail.$invalid &amp;&amp; orgMails.mail.$dirty, 'has-success': mail.mail != '' &amp;&amp; orgMails.mail.$valid &amp;&amp; orgMails.mail.$dirty}">
+									<input type="email" unc-mail name="mail" class="form-control" ng-focus="add('o', $last)" ng-model="mail.mail"/>
+									<span class="glyphicon form-control-feedback" ng-show="mail.mail != '' &amp;&amp; orgMails.mail.$dirty" ng-class="{'glyphicon-ok': orgMails.mail.$valid, 'glyphicon-remove': orgMails.mail.$invalid}"></span>
+								</div>
+							</div>
+						</td>
+						<td>
+							<span class="glyphicon" ng-class="{'glyphicon-ok-circle': mail.verified, 'glyphicon-ban-circle': !mail.verified}"></span>
+						</td>
+						<td>
+							<input type="radio" name="primaria" ng-value="mail" ng-model="$parent.row.primary" required/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<h2>Nombre de Usuario</h2>
+	<hr/>
+	<div class="alert alert-success" role="alert" ng-if="loadedUser">
+		<p>Su nombre de usuario actual es <em>{{loadedUser}}</em></p>
+	</div>
+	<p ng-if="!loadedUser"><strong>Por favor</strong>, elija una de las siguientes opciones.</p>
+	<div class="alert alert-warning" role="alert" ng-if="loadedUser">
+		<p>Si desea <strong>modificar</strong> su nombre de usuario, por favor, escriba un <em>mail</em> a <a href="mailto:admin-yuli@unc.edu.ar">admin-yuli@unc.edu.ar</a>, indicando su <strong>nombre completo</strong>, <strong>apellidos</strong>, <strong>cuil</strong> y por último, el <strong>nombre de usuario deseado</strong>.</p>
+		<p>Dicho <em>mail</em> debe ser enviado desde una de las <strong>direcciones de correo</strong> <em>(ya sea personal o institucional)</em> que haya sido <strong>verificada</strong>. Caso contrario, será <strong><em>descartado</em></strong>.</p>
+	</div>
+	<div class="alert alert-info" role="alert">
+		<p>Si desea especificar su nombre de usuario, recuerde que el mismo <strong>debe</strong> contener una o varias letras de <strong>alguno de sus nombres</strong> concatenado con <strong>alguno de sus apellidos</strong>. <strong>Opcionalmente</strong> puede estar seguido de un número. Las diferentes partes pueden, opcionalmente, estar separadas por <em>"_", "." o "-"</em>.</p>
+	</div>
+	<div ng-if="!loadedUser">
+		<div class="row" ng-repeat="alt in row.alts">
+			<label class="col-sm-12">
+				<input type="radio" name="user" value="{{$index}}" ng-model="$parent.$parent.userAlt" required/> {{alt}}
+			</label>
+		</div>
+		<div class="row has-feedback" ng-class="{'has-error': userAlt=='o' &amp;&amp; form.oUser.$invalid &amp;&amp; form.oUser.$dirty, 'has-success': userAlt=='o' &amp;&amp; form.oUser.$valid &amp;&amp; form.oUser.$dirty}">
+			<label class="col-sm-2" for="oUser">
+				<input type="radio" name="user" value="o" ng-model="userAlt" required/> Otro
+			</label> 
+			<span class="col-sm-6 input-group">
+				<input id="oUser" ng-focus="userAlt='o'" name="oUser" type="text" class="form-control" unc-user ng-model="oUser" ng-required="userAlt=='o'"/><div class="input-group-addon">@unc.edu.ar</div>
+				<span class="glyphicon form-control-feedback" ng-show="userAlt=='o' &amp;&amp; form.oUser.$dirty" ng-class="{'glyphicon-ok': form.oUser.$valid, 'glyphicon-remove': form.oUser.$invalid}"></span>
+			</span>
+		</div>
+	</div>
+	<hr/>
+	<button type="submit">Enviar</button>
+</form>

@@ -1,0 +1,16 @@
+<div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
+	<label ng-if="options.label">
+		{{options.label}}
+	</label>
+	<!--input type="email"
+		   class="form-control"
+		   id="{{id}}"
+           formly-dynamic-name="options.key"
+           formly-custom-validation="options.validators"
+		   placeholder="{{options.placeholder}}"
+		   aria-describedby="{{id}}_description"
+		   ng-required="options.required"
+		   ng-disabled="options.disabled"
+		   ng-model="result[options.key || index]"-->
+   <p class="form-control-static">{{result[options.key || index]}}</p>
+</div>

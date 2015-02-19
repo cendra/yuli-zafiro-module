@@ -1,0 +1,25 @@
+<div class="alert alert-info">
+	<p>Usted está viendo esta página por que existe más de una persona que asegura le pertenece el identificador {{uid}}.</p>
+	<p>Como usted acaba de ingresar con su usuario y contraseña de Comdoc, le solicitamos indique cual de las siguientes personas es usted</p>
+</div>
+
+<form class="form-horizontal" ng-submit="resolve()">
+	<div class="form-group" ng-repeat="person in people">
+		<label style="width: 100%; font-weight: normal">
+			<div class="col-sm-1">
+				<input type="radio" name="person" ng-model="$parent.selected" ng-value="person" required/>
+			</div>
+			<div class="col-sm-10">
+				<div><strong>{{person.given_name}} {{person.middle_name}} {{person.family_name}}</strong> - CUIL <strong>{{person.cuip}}</strong></div>
+				<div>Con usuario <strong>{{person.user_name}}</strong></div>
+				<div>{{person.mails.join(', ')}}</div>
+			</div>
+		</label>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10">
+			<button class="btn btn-default">Seleccionar</button>
+		</div>
+	</div>
+</form>
