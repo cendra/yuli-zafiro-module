@@ -34,7 +34,9 @@
 			{
 				"url": "/login",
 				"name": "login",
-				"template": "<h3>Login</h3>",
+				"templateUrl": "views/login.html",
+				"controller": "loginCtrl",
+				"files": ["scripts/controllers/login.js"],
 				"sidenav": {
 					"title": "Login sidenav Title",
 					"ngIcon": "send",
