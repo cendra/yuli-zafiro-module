@@ -9,13 +9,15 @@
 				"templateUrl": "views/wizard.html",
 				"controller": "wizCtrl",
 				"files": ["scripts/controllers/main.js"],
-				"sidenav": "default"
+				"sidenav": "default",
+				"public": true
 			},
 			{
 				"url": "/form",
 				"name": "form",
 				"controller": "formCtrl",
 				"files": ["scripts/controllers/form.js"],
+				"roles": "Test Role 1",
 				"sidenav": {
 					"title": "Formulario",
 					"ngIcon": "shopping_cart"
@@ -25,6 +27,7 @@
 				"url": "/comdoc",
 				"name": "comdoc",
 				"template": "<div class=\"alert alert-info\"><p>A Diego continuación se le pedirá que ingrese su nombre de <strong>usuario y contraseña de <em>Comdoc</em></strong>. Si usted está acostumbrado a ingresar en <em>Comdoc</em>, cuando ingrese el usuario, deberá hacerlo <strong>sin \"@unc\"</strong>.</p><p>Luego, le informará que <strong>la aplicación solicita</strong> ciertos datos de su cuenta. Por favor, <strong>acepte</strong> la solicitud para poder ingresar al formulario.</p></div><p>Haga click en el siguiente enlace para comenzar su autenticación en usuarios.</p><p><a class=\"btn btn-default\" href=\"../connect\">Autenticar</a></p>",
+				"roles": ["Test Role 5", "Test Role 2"],
 				"sidenav": {
 					"title":"Comdoc sidenav",
 					"ngIcon": "verified_user",
@@ -37,6 +40,7 @@
 				"templateUrl": "views/login.html",
 				"controller": "loginCtrl",
 				"files": ["scripts/controllers/login.js"],
+				"public": true,
 				"sidenav": {
 					"title": "Login sidenav Title",
 					"ngIcon": "send",
