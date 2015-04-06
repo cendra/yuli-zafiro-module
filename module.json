@@ -51,7 +51,8 @@
 	},
 	"title": "Yuli",
 	"description": "Sistema de Personas",
-	"image": "images/yuliapaizados.gif",
+	"image": "images/yuli-icon.png",
+	"background": "images/background.jpg",
 	"rest": "http://yuli.unc.edu.ar:3000/api",
 	"socket": "http://yuli.unc.edu.ar:3000/api"
 }
