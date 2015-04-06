@@ -1,7 +1,11 @@
 'use strict';
 
-angular.module('zafiro')
-.controller('loginCtrl', function($scope, zafiro) {
+angular.module('zafiro.yuli')
+.controller('loginCtrl', function($scope, zafiro, toasty) {
+	toasty.pop.success({
+		title: "algo",
+		msg: 'algo'
+	});
 	$scope.formFields = [
 		{
 			key: 'username',

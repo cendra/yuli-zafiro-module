@@ -8,7 +8,7 @@
  * # MainCtrl
  * Controller of the migracionApp
  */
-angular.module('zafiro')
+angular.module('zafiro.yuli')
   .controller('wizCtrl', function ($scope, $http, toasty, $location, $rootScope) {
 
     $scope.reset = function() {

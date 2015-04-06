@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zafiro')
+angular.module('zafiro.yuli')
 .controller('formCtrl', function($scope, $location, $http, toasty, $rootScope) {
 
 	$scope.row = {};
