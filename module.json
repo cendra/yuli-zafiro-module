@@ -6,6 +6,7 @@
 			{
 				"url": "/",
 				"name": "login",
+				"title": "Login",
 				"templateUrl": "views/login.html",
 				"controller": "loginCtrl",
 				"files": ["scripts/controllers/login.js"],
@@ -15,18 +16,19 @@
 			{
 				"url": "/wizard",
 				"name": "main",
+				"title": "Crear Usuario",
 				"templateUrl": "views/wizard.html",
 				"controller": "wizCtrl",
 				"files": ["scripts/controllers/main.js"],
 				"public": true,
 				"sidenav": {
-					"title": "Crear Usuario",
 					"ngIcon": "add_circle"
 				}
 			},
 			{
 				"url": "/form",
 				"name": "form",
+				"title": "Formulario de Reserva de Nombre",
 				"controller": "formCtrl",
 				"files": ["scripts/controllers/form.js"],
 				"templateUrl": "views/form.html"
@@ -34,6 +36,7 @@
 			{
 				"url": "/comdoc",
 				"name": "comdoc",
+				"title": "Usuario de Comdoc",
 				"template": "<div class=\"alert alert-info\"><p>A continuación se le pedirá que ingrese su nombre de <strong>usuario y contraseña de <em>Comdoc</em></strong>. Si usted está acostumbrado a ingresar en <em>Comdoc</em>, cuando ingrese el usuario, deberá hacerlo <strong>sin \"@unc\"</strong>.</p><p>Luego, le informará que <strong>la aplicación solicita</strong> ciertos datos de su cuenta. Por favor, <strong>acepte</strong> la solicitud para poder ingresar al formulario.</p></div><p>Haga click en el siguiente enlace para comenzar su autenticación en usuarios.</p><p><a class=\"btn btn-default\" href=\"../connect\">Autenticar</a></p>"
 			}
 			
@@ -48,7 +51,10 @@
 	"socket": "http://yuli.unc.edu.ar:3000/api",
 	"search": {
 		"user": {
-			"label": "Nombre de Usuario"
+			"label": "Nombre de Usuario",
+			"constrains": {
+				"required": true
+			}
 		}
 	}
 }

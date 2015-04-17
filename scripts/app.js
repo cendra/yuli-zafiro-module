@@ -21,7 +21,7 @@ angular
   ])
   .config(function(zafiroProvider) {
     zafiroProvider.onSearch(function(data) {
-      alert("hey hey hey!!!"+data);
+      alert("Hola desde config de yuli!");
     });
   })
   .directive('uncUser', ['$http', 'toasty', '$parse', function($http, toasty, $parse) {

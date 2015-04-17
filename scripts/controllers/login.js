@@ -36,4 +36,7 @@ angular.module('zafiro.yuli')
 			alert('error');
 		});
 	};
+	zafiro.onSearch(function(data) {
+		$scope.search = JSON.stringify(data);
+	});
 });
