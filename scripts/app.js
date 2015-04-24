@@ -23,6 +23,15 @@ angular
     zafiroProvider.onSearch(function(data) {
       alert("Hola desde config de yuli!");
     });
+    zafiroProvider.setToolbarConf({
+      save: {
+        tip: "Guardar!",
+        icon: "save",
+        action: function() {
+          alert("Guardaaaar!");
+        }
+      }
+    });
   })
   .directive('uncUser', ['$http', 'toasty', '$parse', function($http, toasty, $parse) {
     return {

@@ -36,7 +36,24 @@ angular.module('zafiro.yuli')
 			alert('error');
 		});
 	};
-	zafiro.onSearch(function(data) {
-		$scope.search = JSON.stringify(data);
-	});
+	zafiro
+		.onSearch(function(data) {
+			$scope.search = JSON.stringify(data);
+		})
+		.setViewToolbarConf({
+			add: {
+				icon: "person_add",
+				tip: "register",
+				action: function() {
+					alert('registrar!!!');
+				}
+			},
+			recover: {
+				icon: "sync",
+				tip: "recuprerar contraseña",
+				action: function() {
+					alert('recuperar contraseña');
+				}
+			}
+		});
 });
