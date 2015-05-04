@@ -27,8 +27,11 @@ angular
       save: {
         tip: "Guardar!",
         icon: "save",
-        action: function() {
-          alert("Guardaaaar!");
+        templateUrl: "views/tempList.html",
+        controller: function($scope) {
+          $scope.algo = function() {
+            alert('algo');
+          };
         }
       }
     });

@@ -22,7 +22,7 @@
 				"files": ["scripts/controllers/main.js"],
 				"public": true,
 				"sidenav": {
-					"ngIcon": "add_circle"
+					"ngIcon": "person_add"
 				}
 			},
 			{
